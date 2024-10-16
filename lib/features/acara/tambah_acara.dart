@@ -1,12 +1,13 @@
-import 'package:face_count/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-
+import 'package:face_count/widgets/custom_button.dart';
 import '../../configs/theme.dart';
 import '../../widgets/custom_textfield.dart';
 import '../../widgets/dummy_textfield.dart';
 
 class TambahAcara extends StatefulWidget {
-  const TambahAcara({super.key});
+  final bool isEditMode;
+
+  const TambahAcara({super.key, this.isEditMode = false});
 
   @override
   State<TambahAcara> createState() => _TambahAcaraState();
@@ -32,7 +33,7 @@ class _TambahAcaraState extends State<TambahAcara> {
         ),
         titleSpacing: 0,
         title: Text(
-          'Tambah Acara',
+          widget.isEditMode ? 'Edit Acara' : 'Tambah Acara',
           style: mediumTS.copyWith(fontSize: 20),
         ),
       ),
@@ -84,8 +85,10 @@ class _TambahAcaraState extends State<TambahAcara> {
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
         color: neutral0,
         child: CustomButton(
-          text: 'Buat',
-          onTap: () {},
+          text: widget.isEditMode ? 'Simpan' : 'Buat',
+          onTap: () {
+            // Add your logic here
+          },
         ),
       ),
     );
